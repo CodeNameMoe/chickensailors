@@ -1,5 +1,209 @@
 // This style file is for the HeroSlice component
 
+// Variables
+$hero-min-height: 80vh;
+$content-max-width: 1200px;
+$overlay-opacity: 0.7;
+
 .hero {
-  color: black;
+  position: relative;
+  min-height: $hero-min-height;
+  display: flex;
+  align-items: center;
+  color: hsl(var(--foreground));
+  padding: 2rem;
+  overflow: hidden;
+  font-family: var(--font-sans);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/chicken-dinghy-7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, $overlay-opacity);
+    z-index: -1;
+  }
+
+  .hero__container {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hero__content {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .hero__stats {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+  }
+
+  .hero__egg-card-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 220px;
+    min-height: 260px;
+    max-width: 260px;
+  }
+
+  .hero__egg-card-bg {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 100%;
+    height: 100%;
+    background: hsl(var(--primary));
+    border-radius: var(--radius);
+    z-index: 0;
+    box-shadow: 0 4px 24px 0 rgba(37, 99, 235, 0.15);
+    transform: rotate(-1deg);
+  }
+
+  .hero__egg-card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+    padding: 2.5rem 2rem 2rem 2rem;
+    min-width: 220px;
+    min-height: 260px;
+    max-width: 260px;
+    color: hsl(var(--card-foreground));
+    backdrop-filter: blur(6px);
+    transform: rotate(0.5deg);
+  }
+
+  .hero__egg-card-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    color: hsl(var(--foreground));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  .hero__egg-card-count {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .hero__egg-card-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    opacity: 1;
+    margin-top: 0.2rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-family: var(--font-sans), sans-serif;
+  }
+
+  .hero__highlight {
+    color: hsl(var(--primary));
+    font-weight: 900;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 90%;
+    color: #fff;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  img {
+    display: none;
+  }
+}
+
+.hero__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+  pointer-events: none;
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    .hero__container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero__content {
+      max-width: 100%;
+    }
+
+    .hero__stats {
+      width: 100%;
+      text-align: center;
+    }
+
+    p {
+      max-width: 100%;
+    }
+
+    padding-bottom: 120px;
+  }
 }
