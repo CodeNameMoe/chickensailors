@@ -1,17 +1,17 @@
 // Simulated API delay
-const DELAY = 800
+const DELAY = 800;
 
 // This method adds a delay to simulate an API call and randomly fails to mimic
 // flakiness.  Use it in the API call methods below to add realism to the simulation.
 const addApiFlakiness = async () => {
   // Simulate a delay to mimic an API call
-  await new Promise((resolve) => setTimeout(resolve, DELAY))
+  await new Promise((resolve) => setTimeout(resolve, DELAY));
 
   // Simulate a 10% chance of failure
   if (Math.random() < 0.1) {
-    throw new Error("Failed to fetch data. Please try again.")
+    throw new Error("Failed to fetch data. Please try again.");
   }
-}
+};
 
 // Mock testimonial data
 const testimonials = [
@@ -87,19 +87,18 @@ const testimonials = [
     verified: true,
     date: "2025-04-05",
   },
-]
+];
 
-export const fetchTestimonials = () => {
+export const fetchTestimonials = async () => {
   // TODO: When ready to simulate API flakiness, uncomment the line below, and
   // make this method async.
 
-  // await addApiFlakiness()
+  await addApiFlakiness();
 
   const shuffled = [...testimonials].sort(() => 0.5 - Math.random());
 
-  return shuffled.slice(0, 3)
-}
-
+  return shuffled.slice(0, 3);
+};
 
 // Mock pricing data
 const pricingPlans = [
@@ -109,7 +108,12 @@ const pricingPlans = [
     description: "For beginner sailors",
     price: 129,
     popular: false,
-    features: ["Small, stable design", "Basic safety features", "Suitable for calm waters", "12 egg capacity"],
+    features: [
+      "Small, stable design",
+      "Basic safety features",
+      "Suitable for calm waters",
+      "12 egg capacity",
+    ],
     eggCapacity: 12,
     ctaText: "Order Now",
   },
@@ -146,13 +150,13 @@ const pricingPlans = [
     eggCapacity: 36,
     ctaText: "Order Now",
   },
-]
+];
 
-export const fetchPricingPlans = () => {
+export const fetchPricingPlans = async () => {
   // TODO: When ready to simulate API flakiness, uncomment the line below, and
   // make this method async.
 
-  // await addApiFlakiness()
+  await addApiFlakiness();
 
-  return [...pricingPlans]
-}
+  return [...pricingPlans];
+};

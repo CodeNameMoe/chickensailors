@@ -1,15 +1,22 @@
-import { MessageSquare, Calendar } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
+import { MessageSquare, Calendar } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 
 const TestimonialCard = ({ testimonial }) => {
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
+    const date = new Date(dateString);
     return date.toLocaleDateString("en-GB", {
       year: "numeric",
       month: "long",
       day: "numeric",
-    })
-  }
+    });
+  };
 
   // Get a chicken breed-specific color
   const getBreedColor = (breed) => {
@@ -22,10 +29,10 @@ const TestimonialCard = ({ testimonial }) => {
       "Silkie Bantam": "bg-blue-50 border-blue-200",
       Leghorn: "bg-white border-gray-200",
       Orpington: "bg-yellow-50 border-yellow-200",
-    }
+    };
 
-    return breedColors[breed] || ""
-  }
+    return breedColors[breed] || "";
+  };
 
   return (
     <Card className={`h-full ${getBreedColor(testimonial.breed)}`}>
@@ -39,7 +46,9 @@ const TestimonialCard = ({ testimonial }) => {
       <CardFooter className="flex items-center justify-between">
         <div className="flex items-center">
           <MessageSquare className="mr-2 h-4 w-4 opacity-70" />
-          <span className="text-xs text-muted-foreground">{testimonial.verified ? "Verified Chicken" : "Chicken"}</span>
+          <span className="text-xs text-muted-foreground">
+            {testimonial.verified ? "Verified Chicken" : "Chicken"}
+          </span>
         </div>
         <div className="flex items-center text-xs text-muted-foreground">
           <Calendar className="mr-1 h-3 w-3 opacity-70" />
@@ -47,7 +56,7 @@ const TestimonialCard = ({ testimonial }) => {
         </div>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default TestimonialCard
+export default TestimonialCard;

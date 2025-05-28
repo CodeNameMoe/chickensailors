@@ -1,12 +1,23 @@
-import { ChevronRight, Egg } from 'lucide-react'
-import { Button } from "./ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
+import { ChevronRight, Egg } from "lucide-react";
+import { Button } from "../ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 
 const PricingCard = ({ plan }) => {
   return (
     <Card className={`h-full ${plan.popular ? "border-blue-600" : ""}`}>
       <CardHeader className={plan.popular ? "bg-blue-50" : ""}>
-        {plan.popular && <div className="text-center text-sm font-medium text-blue-600">Most Popular</div>}
+        {plan.popular && (
+          <div className="text-center text-sm font-medium text-blue-600">
+            Most Popular
+          </div>
+        )}
         <CardTitle>{plan.name}</CardTitle>
         <CardDescription>{plan.description}</CardDescription>
       </CardHeader>
@@ -29,8 +40,7 @@ const PricingCard = ({ plan }) => {
         <Button className="w-full">{plan.ctaText}</Button>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default PricingCard
-
+export default PricingCard;
