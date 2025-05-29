@@ -8,20 +8,20 @@ const TestimonialsSlice = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const loadTestimonials = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const data = await fetchTestimonials();
-        setTestimonials(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const loadTestimonials = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const data = await fetchTestimonials();
+      setTestimonials(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadTestimonials();
   }, []);
 
@@ -59,7 +59,7 @@ const TestimonialsSlice = () => {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <p className="text-red-500">Error: {error}</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={loadTestimonials}
               className="text-blue-500 underline"
             >
               Try again

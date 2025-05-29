@@ -8,20 +8,20 @@ const PricingSlice = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const loadPricingPlans = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const data = await fetchPricingPlans();
-        setPricingPlans(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const loadPricingPlans = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const data = await fetchPricingPlans();
+      setPricingPlans(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadPricingPlans();
   }, []);
 
@@ -60,7 +60,7 @@ const PricingSlice = () => {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <p className="text-red-500">Error: {error}</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={loadPricingPlans}
               className="text-blue-500 underline"
             >
               Try again
