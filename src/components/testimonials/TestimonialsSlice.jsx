@@ -43,7 +43,7 @@ const TestimonialsSlice = () => {
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <div key={i} className="h-full">
-                <TestimonialSkeleton />
+                <TestimonialSkeleton data-testid="testimonial-skeleton" />
               </div>
             ))}
           </div>

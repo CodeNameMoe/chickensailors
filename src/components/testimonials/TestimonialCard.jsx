@@ -35,7 +35,10 @@ const TestimonialCard = ({ testimonial }) => {
   };
 
   return (
-    <Card className={`h-full ${getBreedColor(testimonial.breed)}`}>
+    <Card
+      role="article"
+      className={`h-full ${getBreedColor(testimonial.breed)}`}
+    >
       <CardHeader>
         <CardTitle>{testimonial.name}</CardTitle>
         <CardDescription>{testimonial.breed}</CardDescription>
